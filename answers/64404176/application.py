@@ -25,7 +25,6 @@ def after_request(response):
 
     return response
 
-
 @application.route('/', methods=["GET", "POST"])
 def index():
 

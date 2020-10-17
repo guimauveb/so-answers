@@ -4,8 +4,8 @@ from tempfile import mkdtemp
 class Config(object):
 
     # Main config
-    SECRET_KEY = 'f6e7afe4643e273d54440ce81bcd13cc2d9feb8bd4261c2c'
-    SECURITY_PASSWORD_SALT = '142ef85f197e7bf66738c271472cc52d'
+    SECRET_KEY = 'SOME_SECRET_KEY'
+    SECURITY_PASSWORD_SALT = 'SOME_PASSWD_SALT'
     TEMPLATES_AUTO_RELOAD = True
     SEND_FILE_MAX_AGE_DEFAULT = 0
     DEBUG = False
