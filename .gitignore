@@ -2,3 +2,5 @@
 
 SO-env/*
 SO.png
+
+__pycache__/
