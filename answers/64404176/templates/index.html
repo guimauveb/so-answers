@@ -1,56 +1,18 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="initial-scale = .9,maximum-scale = .9" />
-
-        <script src="{{ url_for('static', filename='sliders.js') }}"></script>
-
-        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    </head>
-    <body class="sm-section">
-        <header>
-            <div id="header">
-                <div class="nav-container">
-                    <!--navbar-->
-                    <nav>
-                        <div class="left-menu">
-                        </div>
-                        <div class="center-menu">
-                            <a class="nav-item" href="#!">SO answer 64404176</a>
-                        </div>
-                        <div class="right-login">
-                        </div>
-                    </nav>
-                </div>
-            </div>
-        </header>
-        <div class="unique-content">
-            <script type="text/javascript">
-                document.addEventListener('DOMContentLoaded', function() {
-                                    sliders.setCSRFToken('{{ csrf_token() }}');
-                                });
-            </script>
-            <div id="motorSliderForm">
-                <input name="leftMotorSlider" type="range" min="0" max="100" step="1" oninput="sliders.updateMotorValue('left', this.value)" value={{leftMotor}}>
-                <span id="leftMotorValBox"></span>
-                <br>
-                <input name="rightMotorSlider" type="range" min="0" max="100" step="1" oninput="sliders.updateMotorValue('right', this.value)" value={{rightMotor}}>
-                <span id="rightMotorValBox"></span>
-            </div>
-        </div>
-        <div class="footer-wrapper">
-            <footer class="main-footer">
-                <div class="left-info-footer">
-                </div>
-                <div class="center-tags-footer">
-                    <a class="footer-link" href="#!">guimauve</a>
-                </div>
-                <div class="right-social-footer">
-                </div>
-            </footer>
-        </div>
-        <!--footer-wrapper-->
-    </body>
-</html>
+{% extends 'layout.html' %}
+{% block title %}64404176{% endblock %}
+{% block main %}
+<div class="unique-content">
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+                    sliders.setCSRFToken('{{ csrf_token() }}');
+                });
+    </script>
+    <div id="motorSliderForm">
+        <input name="leftMotorSlider" type="range" min="0" max="100" step="1" oninput="sliders.updateMotorValue('left', this.value)" value={{leftMotor}}>
+        <span id="leftMotorValBox"></span>
+        <br>
+        <input name="rightMotorSlider" type="range" min="0" max="100" step="1" oninput="sliders.updateMotorValue('right', this.value)" value={{rightMotor}}>
+        <span id="rightMotorValBox"></span>
+    </div>
+</div>
+{% endblock %}
