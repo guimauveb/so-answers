@@ -46,6 +46,7 @@ void deleteBook(struct Book *book)
 
 int main()
 {
+    // Used to generate random prices
     srand(time(NULL));
     // Array of 5 Book pointers
     struct Book *books[5];
