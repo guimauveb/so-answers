@@ -30,7 +30,7 @@ struct Book *newBook(char *t, int c)
         return NULL;
     }
 
-    newBook->title = (char*)malloc(strlen(t) * sizeof(char)); 
+    newBook->title = (char*)malloc((strlen(t) + 1) * sizeof(char)); 
     strcpy(newBook->title, t);
 
     newBook->cost = c;
