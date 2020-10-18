@@ -6,7 +6,7 @@
 struct Book {
     char *title;
     int cost;
-} book;
+};
 
 int get_cost(struct Book **books, int cost, int size)
 {
