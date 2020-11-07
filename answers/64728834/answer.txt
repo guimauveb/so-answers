@@ -1,0 +1,32 @@
+I don't know what is the **best way** to achieve what you want but here's what you could try. Assuming you want to perform some analytics on the data you might want to store it in a database.
+
+You could have a route designed to create a user cookie when a new user visits your page and redirects him to the articles page with the new cookie set:
+
+```python
+@main_bp.route('/articles/set_cookie', "GET"])
+def set_article_cookie():
+
+    sessionserializer = securecookiesessioninterface().get_signing_serializer(main_bp)
+    tempcookie = sessionserializer.dumps(dict(session))
+    resp = make_response(redirect('/articles')) 
+    resp.set_cookie("user", tempcookie)
+    return resp
+```
+
+And your existing route in which you check if the user has already visited the page. In which case you will want to check in the database what was the last article he read and redirect him accordingly:
+
+```python
+@main_bp.route('/articles/<category>/<article_number>', defaults={'category': 'new'})
+def articles(category, article_number):
+
+    # If the user cookie is already set, check if there is some data is the database and redirect to his last 
+    article visited 
+    cookie = request.cookies
+    if "user" in cookie:
+        # Retreive the user cookie value and check the database for this value
+        return redirect('/articles/' + last_article_visited)
+
+    # Else redirect the user to set_article_cookie
+    else:
+        return redirect("/set_article_cookie")
+```
